@@ -1,24 +1,47 @@
-import React, { createElement } from 'react';
-import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
-import { Layout, Menu, theme } from 'antd';
+import React from "react";
+// import {
+//   UploadOutlined,
+//   UserOutlined,
+//   VideoCameraOutlined,
+// } from "@ant-design/icons";
+import { Layout, Menu, MenuProps } from "antd";
 
 const { Header, Content, Footer, Sider } = Layout;
 
-const items = [UserOutlined, VideoCameraOutlined, UploadOutlined, UserOutlined].map(
-  (icon, index) => ({
-    key: String(index + 1),
-    icon: createElement(icon),
-    label: `nav ${index + 1}`,
-  }),
-);
+const items: MenuProps["items"] = [
+  {
+    key: "1",
+    label: "Profile",
+  },
+
+  {
+    key: "2",
+    label: "Dashboard",
+  },
+  {
+    key: "3",
+    label: "Course",
+    children: [
+      {
+        key: "01",
+        label: "CSE",
+      },
+
+      {
+        key: "02",
+        label: "EEE",
+      },
+    ],
+  },
+];
 
 const MainLayout: React.FC = () => {
-  const {
-    token: { colorBgContainer, borderRadiusLG },
-  } = theme.useToken();
+  //   const {
+  //     token: { colorBgContainer, borderRadiusLG },
+  //   } = theme.useToken();
 
   return (
-    <Layout>
+    <Layout style={{ height: "100vh" }}>
       <Sider
         breakpoint="lg"
         collapsedWidth="0"
@@ -29,24 +52,40 @@ const MainLayout: React.FC = () => {
           console.log(collapsed, type);
         }}
       >
-        <div className="demo-logo-vertical" />
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={items} />
+        <div
+          style={{
+            color: "white",
+            height: "4rem",
+            display: "flex",
+            alignItems: "center",
+            whiteSpace: "nowrap",
+            marginLeft:"250px",
+            fontSize:"20px"
+          }}
+        >
+          <h1>University Management</h1>
+        </div>
+
+        <Menu
+          theme="dark"
+          mode="inline"
+          defaultSelectedKeys={["4"]}
+          items={items}
+        />
       </Sider>
       <Layout>
-        <Header style={{ padding: 0, background: colorBgContainer }} />
-        <Content style={{ margin: '24px 16px 0' }}>
+        <Header style={{ padding: 0 }} />
+        <Content style={{ margin: "24px 16px 0" }}>
           <div
             style={{
               padding: 24,
               minHeight: 360,
-              background: colorBgContainer,
-              borderRadius: borderRadiusLG,
             }}
           >
             <h1>The Main Content should go here</h1>
           </div>
         </Content>
-        <Footer style={{ textAlign: 'center' }}>
+        <Footer style={{ textAlign: "center" }}>
           Ant Design ©{new Date().getFullYear()} Created by Ant UED
         </Footer>
       </Layout>
@@ -55,12 +94,3 @@ const MainLayout: React.FC = () => {
 };
 
 export default MainLayout;
-// const MainLayout = () => {
-//     return (
-//         <div>
-            
-//         </div>
-//     );
-// };
-
-// export default MainLayout;
