@@ -1,13 +1,11 @@
-
-// import './App.css'
+import MainLayout from "./components/layout/MainLayout";
 
 function App() {
-
   return (
-   <div>
-    Rifat
-   </div>
-  )
+    <div>
+      <MainLayout></MainLayout>
+    </div>
+  );
 }
 
-export default App
+export default App;
