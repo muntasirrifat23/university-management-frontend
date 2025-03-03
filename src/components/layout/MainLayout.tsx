@@ -5,31 +5,30 @@ import React from "react";
 //   VideoCameraOutlined,
 // } from "@ant-design/icons";
 import { Layout, Menu, MenuProps } from "antd";
+import { NavLink, Outlet } from "react-router-dom";
 
 const { Header, Content, Footer, Sider } = Layout;
 
 const items: MenuProps["items"] = [
   {
-    key: "1",
-    label: "Profile",
-  },
-
-  {
-    key: "2",
-    label: "Dashboard",
+    key: "Dashboard",
+    label: <NavLink to="/admin/dashboard">Dashboard</NavLink>,
   },
   {
-    key: "3",
-    label: "Course",
+    key: "User Management",
+    label: "User Management",
     children: [
       {
-        key: "01",
-        label: "CSE",
+        key: "Create Admin",
+        label: <NavLink to="/admin/createAdmin">Create Admin</NavLink>,
       },
-
       {
-        key: "02",
-        label: "EEE",
+        key: "Create Faculty",
+        label: <NavLink to="/admin/createFaculty">Create Faculty</NavLink>,
+      },
+      {
+        key: "Create Student",
+        label: <NavLink to="/admin/createStudent">Create Student</NavLink>,
       },
     ],
   },
@@ -59,8 +58,8 @@ const MainLayout: React.FC = () => {
             display: "flex",
             alignItems: "center",
             whiteSpace: "nowrap",
-            marginLeft:"250px",
-            fontSize:"20px"
+            marginLeft: "250px",
+            fontSize: "20px",
           }}
         >
           <h1>University Management</h1>
@@ -82,7 +81,7 @@ const MainLayout: React.FC = () => {
               minHeight: 360,
             }}
           >
-            <h1>The Main Content should go here</h1>
+            <Outlet></Outlet>
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>

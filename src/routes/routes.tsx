@@ -1,9 +1,37 @@
 import { createBrowserRouter } from "react-router-dom";
-import MainLayout from "../components/layout/MainLayout";
+import App from "../App";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
+import { adminPaths } from "./admin.routes";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <MainLayout></MainLayout>,
+    element: <App></App>,
+  },
+  //Admin
+  {
+    path: "/admin",
+    element: <App></App>,
+    children: adminPaths,
+  },
+  {
+    path: "/faculty",
+    element: <App></App>,
+    children: adminPaths,
+  },
+  {
+    path: "/student",
+    element: <App></App>,
+    children: adminPaths,
+  },
+  // Login and Register
+  {
+    path: "/login",
+    element: <Login></Login>,
+  },
+  {
+    path: "/register",
+    element: <Register></Register>,
   },
 ]);
