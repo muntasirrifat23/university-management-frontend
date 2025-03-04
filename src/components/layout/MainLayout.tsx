@@ -1,44 +1,10 @@
-import React from "react";
-// import {
-//   UploadOutlined,
-//   UserOutlined,
-//   VideoCameraOutlined,
-// } from "@ant-design/icons";
-import { Layout, Menu, MenuProps } from "antd";
-import { NavLink, Outlet } from "react-router-dom";
+import { Layout, Menu } from "antd";
+import { Outlet } from "react-router-dom";
+import { adminSidebarItems } from "../../routes/admin.routes";
 
 const { Header, Content, Footer, Sider } = Layout;
 
-const items: MenuProps["items"] = [
-  {
-    key: "Dashboard",
-    label: <NavLink to="/admin/dashboard">Dashboard</NavLink>,
-  },
-  {
-    key: "User Management",
-    label: "User Management",
-    children: [
-      {
-        key: "Create Admin",
-        label: <NavLink to="/admin/createAdmin">Create Admin</NavLink>,
-      },
-      {
-        key: "Create Faculty",
-        label: <NavLink to="/admin/createFaculty">Create Faculty</NavLink>,
-      },
-      {
-        key: "Create Student",
-        label: <NavLink to="/admin/createStudent">Create Student</NavLink>,
-      },
-    ],
-  },
-];
-
-const MainLayout: React.FC = () => {
-  //   const {
-  //     token: { colorBgContainer, borderRadiusLG },
-  //   } = theme.useToken();
-
+const MainLayout = () => {
   return (
     <Layout style={{ height: "100vh" }}>
       <Sider
@@ -54,22 +20,20 @@ const MainLayout: React.FC = () => {
         <div
           style={{
             color: "white",
+
             height: "4rem",
             display: "flex",
+            justifyContent: "center",
             alignItems: "center",
-            whiteSpace: "nowrap",
-            marginLeft: "250px",
-            fontSize: "20px",
           }}
         >
-          <h1>University Management</h1>
+          <h1>PH Uni</h1>
         </div>
-
         <Menu
           theme="dark"
           mode="inline"
           defaultSelectedKeys={["4"]}
-          items={items}
+          items={adminSidebarItems}
         />
       </Sider>
       <Layout>
@@ -81,15 +45,39 @@ const MainLayout: React.FC = () => {
               minHeight: 360,
             }}
           >
-            <Outlet></Outlet>
+            <Outlet />
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
-          Ant Design ©{new Date().getFullYear()} Created by Ant UED
+          MR Design ©{new Date().getFullYear()} Created by Muntasir Rifat
         </Footer>
       </Layout>
     </Layout>
   );
 };
 
+// const items: MenuProps["items"] = [
+//   {
+//     key: "Dashboard",
+//     label: <NavLink to="/admin/dashboard">Dashboard</NavLink>,
+//   },
+//   {
+//     key: "User Management",
+//     label: "User Management",
+//     children: [
+//       {
+//         key: "Create Admin",
+//         label: <NavLink to="/admin/createAdmin">Create Admin</NavLink>,
+//       },
+//       {
+//         key: "Create Faculty",
+//         label: <NavLink to="/admin/createFaculty">Create Faculty</NavLink>,
+//       },
+//       {
+//         key: "Create Student",
+//         label: <NavLink to="/admin/createStudent">Create Student</NavLink>,
+//       },
+//     ],
+//   },
+// ];
 export default MainLayout;
